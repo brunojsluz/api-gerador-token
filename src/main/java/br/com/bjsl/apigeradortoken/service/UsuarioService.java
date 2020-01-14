@@ -15,11 +15,11 @@ public class UsuarioService {
 
     private static final String DESCRICAO = "API de Autenticação para teste";
 
-    @Value("${api.secret}")
+    @Value("${jwt.api.expiration}")
     private String secret;
 
-    @Value("${api.expiration}")
-    private Long expiration;
+    @Value("${jwt.api.expiration}")
+    private String expiration;
 
     public String autenticar(UsuarioDTO usuario) {
         return Jwts.builder()
@@ -32,7 +32,7 @@ public class UsuarioService {
     }
 
     private Date obterDataExpiracao() {
-        LocalDateTime localDateTime = LocalDateTime.now().plusSeconds(expiration);
+        LocalDateTime localDateTime = LocalDateTime.now().plusSeconds(Long.parseLong(expiration));
         return Date.from(localDateTime.atZone(ZoneId.systemDefault()).toInstant());
     }
 }

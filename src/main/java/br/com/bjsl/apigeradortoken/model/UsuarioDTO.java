@@ -13,9 +13,9 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 public class UsuarioDTO {
 
-    @NotNull
+    @NotNull(message = "O campo email é obrigatório")
     private String email;
 
-    @NotNull
+    @NotNull(message = "O campo senha é obrigatório")
     private String senha;
 }
