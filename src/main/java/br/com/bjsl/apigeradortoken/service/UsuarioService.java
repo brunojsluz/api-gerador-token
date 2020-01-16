@@ -15,10 +15,10 @@ public class UsuarioService {
 
     private static final String DESCRICAO = "API de Autenticação para teste";
 
-    @Value("${jwt.api.expiration}")
+    @Value("${gerador.api.chave}")
     private String secret;
 
-    @Value("${jwt.api.expiration}")
+    @Value("${gerador.api.expiration}")
     private String expiration;
 
     public String autenticar(UsuarioDTO usuario) {
